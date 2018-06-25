@@ -12,7 +12,7 @@ def index():
       <head></head>
       <body>
         <form action="/submit" method = "POST" id = "usrform">
-          <span>I want to cross off </span><select name="cars">{getMovielistinHTML()}</select><span>from my Watchlist.</span><br>
+          <span>I want to cross off </span><select name="movielistvalue">{getMovielistinHTML()}</select><span>from my Watchlist.</span><br>
           <input type="submit" name="Submit This" id="submit_button">
         </form>
       </body>
@@ -26,7 +26,7 @@ def index():
 
 @app.route("/submit", methods = ["POST"])
 def submitpage():
-  movie_name=request.form['cars']
+  movie_name=request.form['movielistvalue']
   return cross_off(movie_name)
 
   
