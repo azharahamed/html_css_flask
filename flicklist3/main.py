@@ -36,7 +36,6 @@ add_form = """
 current_watchlist = [ "Star Wars", "Minions", "Freaky Friday", "My Favorite Martian" ]
     # returns user's current watchlist--hard coded for now
 
-
 # a form for crossing off watched movies
 # (first we build a dropdown from the current watchlist items)
 
@@ -57,7 +56,7 @@ def getcrossoff_form():
           <input type="submit" value="Cross It Off"/>
       </form>
   """.format(crossoff_options)
-
+   
   return crossoff_form
 
 # a list of movies that nobody should have to watch
@@ -68,7 +67,6 @@ terrible_movies = [
     "Nine Lives",
     "Starship Troopers"
 ]
-
 
 @app.route("/crossoff", methods=['POST'])
 def crossoff_movie():
@@ -86,9 +84,8 @@ def crossoff_movie():
     crossed_off_movie_element = "<strike>" + crossed_off_movie + "</strike>"
     confirmation = crossed_off_movie_element + " has been crossed off your Watchlist."
     content = page_header + "<p>" + confirmation + "</p>" + page_footer
-
+    current_watchlist.remove(crossed_off_movie_element)
     return content
-
 
 @app.route("/add", methods=['POST'])
 def add_movie():
@@ -117,7 +114,6 @@ def add_movie():
     current_watchlist.append(new_movie)
 
     return content
-
 
 @app.route("/")
 def index():
