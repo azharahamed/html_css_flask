@@ -84,7 +84,7 @@ def crossoff_movie():
     crossed_off_movie_element = "<strike>" + crossed_off_movie + "</strike>"
     confirmation = crossed_off_movie_element + " has been crossed off your Watchlist."
     content = page_header + "<p>" + confirmation + "</p>" + page_footer
-    current_watchlist.remove(crossed_off_movie_element)
+    current_watchlist.remove(crossed_off_movie)
     return content
 
 @app.route("/add", methods=['POST'])
