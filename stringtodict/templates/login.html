@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>String to Dictionary</title>
+</head>
+<body>
+  <form action="/submit" method="POST">
+    <table>
+      <tr>
+        <th>
+          <label for="key1">Key 1:</label>
+          <input type="text" name="key1">
+        </th>
+        <th>
+            <label for="value1">Value 1:</label>
+            <input type="text" name="value1">
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <label for="key2">Key 2:</label>
+          <input type="text" name="key2">
+        </th>
+        <th>
+          <label for="value2">Value 2:</label>
+          <input type="text" name="value2">
+        </th>
+      </tr>
+      <tr>
+          <th>
+            <label for="key3">Key 3:</label>
+            <input type="text" name="key3">
+          </th>
+          <th>
+            <label for="value3">Value 3:</label>
+            <input type="text" name="value3">
+          </th>
+      </tr>
+      <tr>
+          <th>
+            
+          </th>
+          <th>
+            <input type="submit" value="Submit Now">
+          </th>
+      </tr>
+    </table>
+  </form>
+
+  {% if display_dict %}
+  <table>
+    {% for key, value in display_dict.items() %}
+      <tr>
+        <th>{{ key }} :</th>
+        <th>{{ value }}</th>
+      </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+</body>
+</html>
