@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, redirect
 
-app = Flask(__name__,static_folder="/static")
+app = Flask(__name__)
 
 app.config['DEBUG'] = True      # displays runtime errors in the browser, too
 app.config['ENV'] = 'development'

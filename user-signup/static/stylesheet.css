@@ -2,6 +2,41 @@
   color:red;
 }
 
+.star {
+  color: red;
+  text-decoration: bold;
+}
+
 table {
   text-align: left;
+}
+
+body {
+  color: #444444;
+}
+
+html {
+	line-height: 1.6;
+}
+
+.card {
+  flex: 1 1 50%;
+  position: relative;
+  border: 1px solid #efefef;
+}
+
+.card-content {
+  padding: 0 0 0px 15px;
+  margin: auto;
+}
+
+h1{
+  margin: 0px 0 10px 0;
+}
+
+.global_errormessage {
+  color:red;
+  margin: 0px 0 10px 0;
+  padding: 0 0 100px 15px;
+  font-weight: bold;
 }
