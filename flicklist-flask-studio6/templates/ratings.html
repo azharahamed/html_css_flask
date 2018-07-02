@@ -16,11 +16,9 @@
                  if a server side condition is met?  -->
             {% for rating in ["How is it going ?", "*", "**", "***", "****", "*****"] %}
               <option 
-                {% if ("How is it going ?" != rating) %}
-                  {% if (movie.rating.value == ratingsType(rating).value)  %}
+                  {% if (movie.rating.value == rating)  %}
                     selected
                   {% endif %}
-                {% endif %} 
               >{{ rating }}</option>
             {% endfor %}
           </select>

@@ -9,11 +9,11 @@ app.config['DEBUG'] = True      # displays runtime errors in the browser, too
 connection_string = f'mysql+pymysql://{username}:{password}@{host}:{port}/{database}'
 app.config['SQLALCHEMY_DATABASE_URI'] = connection_string
 app.config['SQLALCHEMY_ECHO'] = True
+app.config['ENV'] = 'development'
 
 db = SQLAlchemy(app)
 
 class ratingsType(Enum):
-    How_it_come = False
     one = '*'
     two = '**'
     three = '***'
@@ -70,14 +70,19 @@ def rate_movie():
         # redirect to homepage, and include error as a query parameter in the URL
         return redirect("/?error=" + error)
 
-    elif rating == "How is it going ?":
-        error = "Please select a correct rating - You selected 'How is it going? ' option instead of star"
-        return redirect("/?error=" + error)
+    # elif rating not in ratingsType:
+    #     error = "Please select a correct rating - You selected 'How is it going? ' option instead of star"
+    #     return redirect("/?error=" + error)
 
     # if we didn't redirect by now, then all is well
     else:
-        movie.rating = ratingsType(rating).name
-        db.session.commit()
+        try:
+            movie.rating = ratingsType(rating).name
+            db.session.commit()
+        except ValueError:
+            error = "Please select a correct rating - You selected 'How is it going? ' option instead of star"
+            return redirect("/?error=" + error)
+        
     # TODO: make a persistent change to the model so that you STORE the rating in the database
     # (Note: the next TODO is in templates/ratings.html)
     
